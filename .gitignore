@@ -1,0 +1,6 @@
+# Ignorar node_modules 
+# Necessário para não sobrecarregar o repositório remoto com pacotes da aplicação
+/node_modules
+
+# ignorar as senhas de ambiente que são privadas para a aplicação
+.env 
