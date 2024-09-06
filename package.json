@@ -1,0 +1,39 @@
+{
+  "name": "api-nosql",
+  "version": "1.0.0",
+  "description": "Project developed with nosql knowledge from college of computer science",
+  "main": "server.js",
+  "scripts": {
+    "test": "nodemon server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Richke2005/api-nosql.git"
+  },
+  "keywords": [
+    "node.js",
+    "mongoDB",
+    "API",
+    "nosql",
+    "express"
+  ],
+  "author": "Richard Carvalho Dos Anjos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Richke2005/api-nosql/issues"
+  },
+  "homepage": "https://github.com/Richke2005/api-nosql#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.30.0",
+    "eslint-plugin-n": "^16.6.2",
+    "eslint-plugin-promise": "^6.6.0",
+    "globals": "^15.9.0",
+    "nodemon": "^3.1.4"
+  }
+}
