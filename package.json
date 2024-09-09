@@ -4,7 +4,7 @@
   "description": "Project developed with nosql knowledge from college of computer science",
   "main": "server.js",
   "scripts": {
-    "test": "nodemon server.js",
+    "dev": "nodemon server.js",
     "start": "node server.js"
   },
   "repository": {
