@@ -1,7 +1,13 @@
 const express = require("express");
 const routes = require("./routes/index.js");
+const connect = require("./database/config/config.js");
 
 const app = express();
-routes(app);
+
+connect()
+.then(() => {
+    routes(app)
+});
+
 
 module.exports = app;
