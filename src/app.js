@@ -6,8 +6,7 @@ const app = express();
 
 connect()
 .then(() => {
-    routes(app)
+    routes(app);
 });
-
 
 module.exports = app;

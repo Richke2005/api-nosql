@@ -1,16 +1,18 @@
-const DataSource = require("../database/models/index.js");
+const { Collection } = require("mongodb")
 
 class Service{
+    #service;
+
     constructor(serviceName){
-        this.service = serviceName;
+        this.#service = serviceName;
     }
 
     async getAllReg(){
-        return DataSource.models[this.service].find();
+        return Collection(this.#service).find();
     }
 
     async getRegById(id){
-        return DataSource.models[this.service].findById(id);
+        return Collection(this.#service).findOne({_id: id});
     }
 
     async postReg(doc){
