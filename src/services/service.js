@@ -1,4 +1,7 @@
-const { Collection } = require("mongodb")
+const { ObjectId } = require("mongodb");
+const { client } = require("../database/config/config.js");
+
+const database = client.db("skilltech");
 
 class Service{
     #service;
@@ -8,23 +11,23 @@ class Service{
     }
 
     async getAllReg(){
-        return Collection(this.#service).find();
+        return database.collection(this.#service).find({}).toArray();
     }
 
     async getRegById(id){
-        return Collection(this.#service).findOne({_id: id});
+        return database.collection(this.#service).findOne({ _id: new ObjectId(id) });
     }
 
     async postReg(doc){
-        return DataSource.models[this.service].create(doc);
+        return database.collection(this.#service).insertOne(doc);
     }
 
     async updateReg(id, doc){
-        return DataSource.models[this.service].findByIdAndUpdate(id, {$set: doc});
+        return database.collection(this.#service).updateOne({ _id: new ObjectId(id) }, { $set: doc });
     }
 
     async deleteReg(id){
-        return DataSource.models[this.service].findByIdAndDelete(id);
+        return database.collection(this.#service).deleteOne({ _id: new ObjectId(id) });
     }
 }
 

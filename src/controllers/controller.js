@@ -16,6 +16,9 @@ class Controller{
         try{
             const { id } = req.params;
             const document = await this.entityService.getRegById(id);
+            if(document == null){
+                res.status(404).send({message: `Document with ID: ${id} not found`});
+            }
             res.status(200).send(document);
         }catch(error){
             res.status(400).send({message: error});
@@ -26,7 +29,7 @@ class Controller{
         try{
             const doc = req.body;
             const savedDocument = await this.entityService.postReg(doc);
-            res.status(201).send({createdDoc: savedDocument});
+            res.status(201).send(savedDocument);
         }catch(error){
             res.status(500).send({message: error});
         }
@@ -36,8 +39,13 @@ class Controller{
         try{
             const { id } = req.params;
             const doc = req.body;
-            await this.entityService.updateReg(id, doc);
-            res.status(200).send({message: `Document with ID: ${id} successfully updated`});
+
+            const update = await this.entityService.updateReg(id, doc);
+            if(update.matchedCount === 0){
+                return res.status(404).send({message: `Document with ID: ${id} not found`});
+            }
+
+            return res.status(200).send({message: `Document with ID: ${id} successfully updated`, update});
         }catch(error){
             res.status(500).send({message: error});
         }
@@ -46,8 +54,11 @@ class Controller{
     async delete(req, res){
         try{
             const { id } = req.params;
-            const deletedDocument = await this.entityService.deleteReg(id);
-            res.status(200).send({deletedDoc: deletedDocument});
+            const deleted = await this.entityService.deleteReg(id);
+            if(deleted.deletedCount === 0){
+                return res.status(404).send({message: `Document with ID: ${id} not found`});
+            }
+            res.status(200).send({message: `Document with ID ${id} Was deleted`, deleted});
         }catch(error){
             res.status(500).send({message: error});
         }
