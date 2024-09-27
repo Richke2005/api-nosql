@@ -1,5 +1,5 @@
 const Controller = require("./controller.js");
-const ProductService = require("../services/productServices.js");
+const ProductService = require("../services/productService.js");
 
 const productServices = new ProductService();
 
