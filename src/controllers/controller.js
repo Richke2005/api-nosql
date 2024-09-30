@@ -28,6 +28,9 @@ class Controller{
     async post(req, res){
         try{
             const doc = req.body;
+            if(Object.keys(doc).length === 0 && doc.constructor === Object){
+                return res.status(400).send({message: 'Document cannot be empty'});
+            }
             const savedDocument = await this.entityService.postReg(doc);
             res.status(201).send(savedDocument);
         }catch(error){

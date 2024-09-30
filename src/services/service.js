@@ -1,7 +1,7 @@
 const { ObjectId } = require("mongodb");
 const { client } = require("../database/config/config.js");
 
-const database = client.db("skilltech");
+const database = client.db("api-nosql");
 
 class Service{
     #service;

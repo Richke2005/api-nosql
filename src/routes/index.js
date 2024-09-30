@@ -1,13 +1,15 @@
 const express = require("express");
-const instructorRoutes = require("./instructorRoutes.js");
+const userRoutes = require("./userRoutes.js");
+const productRoutes = require("./productRoutes.js");
 
 module.exports = (app) => {
     app.route('/').get((req, res)=>{
-        res.status(200).send({message: "API skilltechub"});
+        res.status(200).send({message: "API NoSQL"});
     });
 
     app.use(
         express.json(),
-        instructorRoutes
+        userRoutes,
+        productRoutes
     );
 }
