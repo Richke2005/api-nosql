@@ -70,12 +70,12 @@ Rápida descrição do objetivo de fazer esse projeto
 
 5. **Acessar a API**
 
-   Agora a API estará disponível em: `http://localhost:<PORT>`. O valor padrão da `PORT` é `3001`, se não houver sido modificado.
+   Agora a API estará disponível em: `http://localhost:<PORT>`. O valor padrão da `PORT` é `3000`, se não houver sido modificado.
 
-   Exemplo para acessar a rota de itens:
+   Exemplo para acessar a rota de produtos:
 
    ```
-   GET http://localhost:3000/api/items
+   GET http://localhost:3000/products
    ```
 
 ### MongoDB
