@@ -1,22 +1,19 @@
 const Service = require("./service.js");
-const { client } = require("../database/config/config.js");
-
-const database = client.db("api-nosql");
 
 class UserService extends Service{
     constructor(){
         super("users");
     }
 
-    async userSearch(parameters){
+    async usersSearch(parameters){
         const {name, email} = parameters;
 
         const search = {};
 
-        if(name) search.name;
-        if(email) search.email;
+        if(name) search.name = { $regex: name, $options: 'i' };
+        if(email) search.email = { $regex: email, $options: 'i' };
 
-        return super.getRegBySearch(search);
+        return super.getAllRegBySearch(search);
     }
 }
 

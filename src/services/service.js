@@ -18,7 +18,7 @@ class Service{
         return database.collection(this.#service).findOne({ _id: new ObjectId(id) });
     }
 
-    async getRegBySearch(search = {}, projection = {}){
+    async getAllRegBySearch(search = {}, projection = {}){
         return database.collection(this.#service).find(search, projection).toArray();
     }
 
