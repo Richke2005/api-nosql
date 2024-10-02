@@ -18,6 +18,10 @@ class Service{
         return database.collection(this.#service).findOne({ _id: new ObjectId(id) });
     }
 
+    async getRegBySearch(search = {}, projection = {}){
+        return database.collection(this.#service).find(search, projection).toArray();
+    }
+
     async postReg(doc){
         return database.collection(this.#service).insertOne(doc);
     }
