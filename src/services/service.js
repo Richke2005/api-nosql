@@ -15,11 +15,15 @@ class Service{
     }
 
     async getRegById(id){
-        return database.collection(this.#service).findOne({ _id: new ObjectId(id) });
+        return database.collection(this.#service).findOne({ _id: new ObjectId(id)});
     }
 
     async getAllRegBySearch(search = {}, projection = {}){
         return database.collection(this.#service).find(search, projection).toArray();
+    }
+
+    async getRegByAggregation(aggregation = []){
+        return database.collection(this.#service).aggregate(aggregation).toArray();
     }
 
     async postReg(doc){

@@ -1,10 +1,11 @@
 const express = require("express");
+const path = require('path');
 const userRoutes = require("./userRoutes.js");
 const productRoutes = require("./productRoutes.js");
 
 module.exports = (app) => {
     app.route('/').get((req, res)=>{
-        res.status(200).send({message: "API NoSQL"});
+        res.sendFile(path.join(__dirname, '../../public/index.html'));
     });
 
     app.use(

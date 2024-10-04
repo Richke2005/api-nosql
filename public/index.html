@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Reference</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header a {
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        .main {
+            padding: 20px;
+            background: #fff;
+            margin-top: 20px;
+        }
+        .main h1 {
+            text-align: center;
+        }
+        .route {
+            margin-bottom: 20px;
+        }
+        .route h2 {
+            color: #333;
+        }
+        .route pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>API Reference</h1>
+        </div>
+    </header>
+    <div class="container main">
+        <h1>API noSQL v1</h1>
+        <h2>Base URL: <code>/api-nosql/api/v1/</code></h2>
+
+        <div class="route">
+            <h2>GET /users</h2>
+            <p>Retrieve a list of users.</p>
+            <pre>
+Method: GET
+URL: /api-nosql/api/v1/users
+Response: 
+[
+    {
+        "id": "1",
+        "name": "John Doe",
+        "email": "john@example.com"
+    },
+    ...
+]
+            </pre>
+        </div>
+
+        <div class="route">
+            <h2>POST /users</h2>
+            <p>Create a new user.</p>
+            <pre>
+Method: POST
+URL: /api-nosql/api/v1/users
+Request Body: 
+{
+    "name": "John Doe",
+    "email": "john@example.com"
+}
+Response: 
+{
+    "id": "1",
+    "name": "John Doe",
+    "email": "john@example.com"
+}
+            </pre>
+        </div>
+
+        <div class="route">
+            <h2>GET /products</h2>
+            <p>Retrieve a list of products.</p>
+            <pre>
+Method: GET
+URL: /api-nosql/api/v1/products
+Response: 
+[
+    {
+        "id": "1",
+        "name": "Product 1",
+        "price": 100
+    },
+    ...
+]
+            </pre>
+        </div>
+
+        <div class="route">
+            <h2>POST /products</h2>
+            <p>Create a new product.</p>
+            <pre>
+Method: POST
+URL: /api-nosql/api/v1/products
+Request Body: 
+{
+    "name": "Product 1",
+    "price": 100
+}
+Response: 
+{
+    "id": "1",
+    "name": "Product 1",
+    "price": 100
+}
+            </pre>
+        </div>
+    </div>
+</body>
+</html>
