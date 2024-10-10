@@ -1,3 +1,4 @@
+const { ObjectId } = require("mongodb");
 const Service = require("./service.js");
 
 class ProductService extends Service{
@@ -27,6 +28,28 @@ class ProductService extends Service{
         if(category) search.category = { $regex: category, $options: 'i' };
         return super.getAllRegBySearch(search);
     }
+
+    async productsByUser(user){
+        return super.getAllRegBySearch({registered_by: new ObjectId(user)});
+    }
+
+    async userRegisteringInfo(id){
+        return super.getRegByAggregation([
+            { $match: { _id: new ObjectId(id) } },
+            { 
+                $lookup: { 
+                from: "users",
+                localField: "registered_by", 
+                foreignField: "_id", 
+                as: "user" 
+                } 
+            },
+            { $unwind: "$user" },
+            { $project: { user: { password: false } } }
+        ])
+    }
+
+
 }
 
 module.exports = ProductService;
