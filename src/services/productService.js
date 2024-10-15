@@ -9,7 +9,7 @@ class ProductService extends Service{
     async productsSearch(parameters){
         const {name, priceGte, priceLte, qtt_stockGte, qtt_stockLte, category} = parameters;
 
-        const search = {};
+        let search = {};
         
         if(name) search.name = { $regex: name, $options: 'i' };
 

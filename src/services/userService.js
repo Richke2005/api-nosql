@@ -8,7 +8,7 @@ class UserService extends Service{
     async usersSearch(parameters){
         const {name, email} = parameters;
 
-        const search = {};
+        let search = {};
 
         if(name) search.name = { $regex: name, $options: 'i' };
         if(email) search.email = { $regex: email, $options: 'i' };
