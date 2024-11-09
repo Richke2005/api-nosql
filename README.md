@@ -94,7 +94,9 @@ Este projeto é uma API desenvolvida com Node.js e MongoDB, que permite a criaç
 
 Certifique-se de que o MongoDB está rodando localmente ou configure o arquivo `.env` com a URI correta para um servidor remoto, como o MongoDB Atlas.
 
-Exemplos de Requisições
+
+### Exemplos de Requisições
+
 1. Criar um Usuário
 
 Endpoint: POST /api-nosql/api/v1/users
