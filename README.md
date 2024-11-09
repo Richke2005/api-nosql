@@ -100,26 +100,26 @@ Exemplos de Requisições
 Endpoint: POST /api-nosql/api/v1/users
 
 Corpo da Requisição:
-
+```bash
 {
   "name": "João Silva",
   "email": "joao@example.com"
 }
-
+```
 Resposta:
-
+```bash
 {
   "_id": "some-mongo-id",
   "name": "João Silva",
   "email": "joao@example.com"
 }
-
+```
 2. Criar um Produto
 
 Endpoint: POST /api-nosql/api/v1/products
 
 Corpo da Requisição:
-
+```bash
 {
   "name": "Produto X",
   "price": 150.00,
@@ -127,9 +127,9 @@ Corpo da Requisição:
   "category": "Eletrônicos",
   "registered_by": "user-id-here"
 }
-
+```
 Resposta:
-
+```bash
 {
   "_id": "some-product-id",
   "name": "Produto X",
@@ -138,13 +138,13 @@ Resposta:
   "category": "Eletrônicos",
   "registered_by": "user-id-here"
 }
-
+```
 3. Buscar Produtos por Parâmetro
 
 Endpoint: GET /api-nosql/api/v1/products/search?name=Produto&priceGte=100
 
 Resposta:
-
+```bash
 [
   {
     "_id": "product-id",
@@ -155,39 +155,40 @@ Resposta:
     "registered_by": "user-id"
   }
 ]
-
+```
 4. Atualizar um Produto
 
 Endpoint: PUT /api-nosql/api/v1/products/:id
 
 Corpo da Requisição:
-
+```bash
 {
   "price": 120.00,
   "qtt_stock": 15
 }
-
+```
 Resposta:
-
+```bash
 {
   "message": "Document with ID: some-product-id successfully updated",
   "update": {
     "matchedCount": 1
   }
 }
-
+```
 5. Deletar um Produto
 
 Endpoint: DELETE /api-nosql/api/v1/products/:id
 
 Resposta:
-
+```bash
 {
   "message": "Document with ID some-product-id was deleted",
   "deleted": {
     "deletedCount": 1
   }
 }
+```
 
 
 
