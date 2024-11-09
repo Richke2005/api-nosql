@@ -14,6 +14,18 @@ Rápida descrição do objetivo de fazer esse projeto
 
 ## Detalhes do projeto
 
+## Descrição do Projeto
+
+Este projeto é uma API desenvolvida com Node.js e MongoDB, que permite a criação, leitura, atualização e exclusão (CRUD) de registros de usuários e produtos. A API também oferece funcionalidades de pesquisa e relacionamento entre produtos e usuários registrados.
+
+### Funcionalidades
+- **Usuários**: Registro e gestão de usuários (nome, e-mail, etc.).
+- **Produtos**: Registro e gestão de produtos (nome, preço, quantidade, categoria, etc.).
+- **Busca**: Pesquisar produtos e usuários por parâmetros como nome, preço e categoria.
+- **Relações**: Buscar produtos registrados por um usuário e obter informações do usuário associado a um produto.
+
+---
+
 
 ## Pré-requisitos
 - Node.js instalado (versão 14 ou superior recomendada).
@@ -81,3 +93,101 @@ Rápida descrição do objetivo de fazer esse projeto
 ### MongoDB
 
 Certifique-se de que o MongoDB está rodando localmente ou configure o arquivo `.env` com a URI correta para um servidor remoto, como o MongoDB Atlas.
+
+Exemplos de Requisições
+1. Criar um Usuário
+
+Endpoint: POST /api-nosql/api/v1/users
+
+Corpo da Requisição:
+
+{
+  "name": "João Silva",
+  "email": "joao@example.com"
+}
+
+Resposta:
+
+{
+  "_id": "some-mongo-id",
+  "name": "João Silva",
+  "email": "joao@example.com"
+}
+
+2. Criar um Produto
+
+Endpoint: POST /api-nosql/api/v1/products
+
+Corpo da Requisição:
+
+{
+  "name": "Produto X",
+  "price": 150.00,
+  "qtt_stock": 10,
+  "category": "Eletrônicos",
+  "registered_by": "user-id-here"
+}
+
+Resposta:
+
+{
+  "_id": "some-product-id",
+  "name": "Produto X",
+  "price": 150.00,
+  "qtt_stock": 10,
+  "category": "Eletrônicos",
+  "registered_by": "user-id-here"
+}
+
+3. Buscar Produtos por Parâmetro
+
+Endpoint: GET /api-nosql/api/v1/products/search?name=Produto&priceGte=100
+
+Resposta:
+
+[
+  {
+    "_id": "product-id",
+    "name": "Produto X",
+    "price": 150.00,
+    "qtt_stock": 10,
+    "category": "Eletrônicos",
+    "registered_by": "user-id"
+  }
+]
+
+4. Atualizar um Produto
+
+Endpoint: PUT /api-nosql/api/v1/products/:id
+
+Corpo da Requisição:
+
+{
+  "price": 120.00,
+  "qtt_stock": 15
+}
+
+Resposta:
+
+{
+  "message": "Document with ID: some-product-id successfully updated",
+  "update": {
+    "matchedCount": 1
+  }
+}
+
+5. Deletar um Produto
+
+Endpoint: DELETE /api-nosql/api/v1/products/:id
+
+Resposta:
+
+{
+  "message": "Document with ID some-product-id was deleted",
+  "deleted": {
+    "deletedCount": 1
+  }
+}
+
+
+
