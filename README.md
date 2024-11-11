@@ -194,5 +194,5 @@ Resposta:
 
 ### Ferramentas Utilizadas
 
-
+- Node.js, Express, MongoDB driver
 
