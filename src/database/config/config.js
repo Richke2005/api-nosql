@@ -1,6 +1,10 @@
 const { MongoClient, ServerApiVersion } = require("mongodb");
+require("dotenv").config();
 
-const client = new MongoClient("mongodb://localhost:27017/", {
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+
+const client = new MongoClient(`mongodb+srv://${dbUser}:${dbPassword}@node-express.5amaocy.mongodb.net/?retryWrites=true&w=majority&appName=Node-express`, {
     serverApi: {
         version: ServerApiVersion.v1,
         strict: true,

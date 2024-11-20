@@ -25,6 +25,7 @@
   },
   "homepage": "https://github.com/Richke2005/api-nosql#readme",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "mongodb": "6.9"
   },

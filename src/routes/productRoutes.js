@@ -10,7 +10,6 @@ router
 .get("/api-nosql/api/v1/products/search", (req, res) => productController.searchMany(req, res))
 .get("/api-nosql/api/v1/products/:id", (req, res) => productController.getById(req, res))
 .get("/api-nosql/api/v1/products/:id/user", (req, res) => productController.getUserInformation(req, res))
-.get("/api-nosql/api/v1/products/user/:id", (req, res) => productController.getProductsByUser(req, res))
 .put("/api-nosql/api/v1/products/:id", (req, res) => productController.update(req, res))
 .delete("/api-nosql/api/v1/products/:id", (req, res) => productController.delete(req, res));
 

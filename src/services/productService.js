@@ -30,7 +30,7 @@ class ProductService extends Service{
     }
 
     async productsByUser(user){
-        return super.getAllRegBySearch({registered_by: new ObjectId(user)});
+        return super.getAllRegBySearch({"registered_by.user_id": new ObjectId(user)});
     }
 
     async userRegisteringInfo(id){
@@ -39,13 +39,13 @@ class ProductService extends Service{
             { 
                 $lookup: { 
                 from: "users",
-                localField: "registered_by", 
+                localField: "registered_by.user_id", 
                 foreignField: "_id", 
-                as: "user" 
+                as: "registering_user" 
                 } 
             },
-            { $unwind: "$user" },
-            { $project: { user: { password: false } } }
+            { $unwind: "$registering_user" },
+            { $project: {registered_by: 0, registering_user: { password: 0 } } }
         ])
     }
 

@@ -3,4 +3,5 @@
 /node_modules
 
 # ignorar as senhas de ambiente que são privadas para a aplicação
-.env 
+# não deixarei aqui para o professor ter acesso
+# .env 
