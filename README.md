@@ -4,7 +4,7 @@ Rápida descrição do objetivo de fazer esse projeto
 
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
-| :sparkles: Nome        | **API NOsql**
+| :sparkles: Nome        | **API NOSQL**
 | :label: Tecnologias | node.js, express, mongodb (tecnologias utilizadas)
 | :rocket: URL         | https://url-deploy.com.br
 | :fire: Desafio     | https://url-do-desafio.com.br
