@@ -8,6 +8,22 @@ class ProductController extends Controller{
         super(productServices);
     }
 
+    async post(req, res){
+        try{
+            const doc = req.body;
+            if(Object.keys(doc).length === 0 && doc.constructor === Object){
+                return res.status(400).send({message: 'Document cannot be empty or user_id is missing'});
+            }
+            if(doc.registered_by == undefined){
+                return res.status(400).send({message: 'Document cannot be empty or user_id is missing'});
+            }
+            const savedDocument = await this.entityService.postReg(doc);
+            return res.status(201).send(savedDocument);
+        }catch(error){
+            res.status(500).send({message: error});
+        }
+    }
+
     async searchMany(req, res){
         try{
             const parameters = req.query;

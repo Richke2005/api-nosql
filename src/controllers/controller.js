@@ -6,9 +6,9 @@ class Controller{
     async getAll(req, res){
         try{
             const documents = await this.entityService.getAllReg();
-            res.status(200).send(documents);
+            return res.status(200).send(documents);
         }catch(error){
-            res.status(500).send({message: error});
+            return res.status(500).send({message: error});
         }
     }
 
@@ -19,9 +19,9 @@ class Controller{
             if(document == null){
                 res.status(404).send({message: `Document with ID: ${id} not found`});
             }
-            res.status(200).send(document);
+            return res.status(200).send(document);
         }catch(error){
-            res.status(400).send({message: error});
+            return res.status(400).send({message: error});
         }
     }
 
@@ -29,10 +29,11 @@ class Controller{
         try{
             const doc = req.body;
             if(Object.keys(doc).length === 0 && doc.constructor === Object){
-                return res.status(400).send({message: 'Document cannot be empty'});
+                return res.status(400).send({message: 'Document cannot be empty or user_id is missing'});
             }
             const savedDocument = await this.entityService.postReg(doc);
-            res.status(201).send(savedDocument);
+            
+            return res.status(201).send(savedDocument);
         }catch(error){
             res.status(500).send({message: error});
         }
@@ -50,7 +51,7 @@ class Controller{
 
             return res.status(200).send({message: `Document with ID: ${id} successfully updated`, update});
         }catch(error){
-            res.status(500).send({message: error});
+            return res.status(500).send({message: error});
         }
     }
 
@@ -61,9 +62,9 @@ class Controller{
             if(deleted.deletedCount === 0){
                 return res.status(404).send({message: `Document with ID: ${id} not found`});
             }
-            res.status(200).send({message: `Document with ID ${id} Was deleted`, deleted});
+            return res.status(200).send({message: `Document with ID ${id} Was deleted`, deleted});
         }catch(error){
-            res.status(500).send({message: error});
+            return res.status(500).send({message: error});
         }
     }
 }

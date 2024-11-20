@@ -6,6 +6,11 @@ class ProductService extends Service{
         super("products");
     }
 
+    async postReg(doc){
+        doc.registered_by = { user_id: new ObjectId(doc.registered_by.user_id) };
+        return super.postReg(doc);
+    }
+
     async productsSearch(parameters){
         const {name, priceGte, priceLte, qtt_stockGte, qtt_stockLte, category} = parameters;
 

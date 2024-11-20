@@ -4,7 +4,7 @@ const userRoutes = require("./userRoutes.js");
 const productRoutes = require("./productRoutes.js");
 
 module.exports = (app) => {
-    app.route('/').get((req, res)=>{
+    app.route('/api-nosql/api/v1/').get((req, res)=>{
         res.sendFile(path.join(__dirname, '../../public/index.html'));
     });
 

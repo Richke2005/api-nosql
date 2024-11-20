@@ -1,150 +1,153 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API Reference</title>
+    <title>Schemaless API Documentation</title>
     <style>
         body {
             font-family: Arial, sans-serif;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
-            background-color: #f4f4f4;
-        }
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-        header {
-            background: #333;
-            color: #fff;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #77aaff 3px solid;
-        }
-        header a {
-            color: #fff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
-        }
-        header ul {
-            padding: 0;
-            list-style: none;
-        }
-        header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-        .main {
-            padding: 20px;
-            background: #fff;
-            margin-top: 20px;
-        }
-        .main h1 {
-            text-align: center;
-        }
-        .route {
-            margin-bottom: 20px;
-        }
-        .route h2 {
+            background: #f4f4f9;
             color: #333;
         }
-        .route pre {
+        header {
+            background: #5a67d8;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            color: #5a67d8;
+            margin-top: 1.5rem;
+        }
+        pre {
             background: #f4f4f4;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
+            padding: 1rem;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        code {
+            color: #c7254e;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #5a67d8;
+            color: #fff;
+        }
+        a {
+            color: #5a67d8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        ul {
+            padding-left: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1>API Reference</h1>
-        </div>
+        <h1>Schemaless API Documentation</h1>
+        <p>Node.js | Express | MongoDB</p>
     </header>
-    <div class="container main">
-        <h1>API noSQL v1</h1>
-        <h2>Base URL: <code>/api-nosql/api/v1/</code></h2>
+    <div class="container">
+        <section>
+            <h2>Overview</h2>
+            <p>Welcome to the Schemaless API documentation. This API leverages MongoDB's schema-less design to provide flexibility for storing and retrieving data.</p>
+            <p><strong>Base URL:</strong> <code>http://localhost:3000/api-nosql/api/v1/</code></p>
+        </section>
 
-        <div class="route">
-            <h2>GET /users</h2>
-            <p>Retrieve a list of users.</p>
-            <pre>
-Method: GET
-URL: /api-nosql/api/v1/users
-Response: 
-[
-    {
-        "id": "1",
-        "name": "John Doe",
-        "email": "john@example.com"
-    },
-    ...
-]
-            </pre>
-        </div>
+        <section>
+            <h2>Features</h2>
+            <ul>
+                <li>Manage users and products with full CRUD operations.</li>
+                <li>Search functionality for flexible data queries.</li>
+                <li>Relational data retrieval between users and products.</li>
+            </ul>
+        </section>
 
-        <div class="route">
-            <h2>POST /users</h2>
-            <p>Create a new user.</p>
-            <pre>
-Method: POST
-URL: /api-nosql/api/v1/users
-Request Body: 
+        <section>
+            <h2>Getting Started</h2>
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>Node.js (14+ recommended)</li>
+                <li>npm (included with Node.js)</li>
+                <li>MongoDB (local or remote like MongoDB Atlas)</li>
+            </ul>
+            <h3>Setup</h3>
+            <ol>
+                <li>Clone the repository:
+                    <pre><code>git clone &lt;repository-url&gt;<br>cd &lt;repository-folder&gt;</code></pre>
+                </li>
+                <li>Install dependencies:
+                    <pre><code>npm install</code></pre>
+                </li>
+                <li>Set up environment variables:
+                    <pre><code>cp .env.example .env</code></pre>
+                    Update <code>.env</code> with your MongoDB connection string and other settings.
+                </li>
+                <li>Run the server:
+                    <pre><code>npm run dev</code></pre>
+                    or
+                    <pre><code>node server.js</code></pre>
+                </li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Endpoints</h2>
+            <h3>Users</h3>
+            <ul>
+                <li><strong>Create User:</strong> <code>POST /users</code></li>
+                <pre>
 {
     "name": "John Doe",
-    "email": "john@example.com"
+    "email": "john.doe@example.com",
+    "password": "password123"
 }
-Response: 
-{
-    "id": "1",
-    "name": "John Doe",
-    "email": "john@example.com"
-}
-            </pre>
-        </div>
+                </pre>
+                <li><strong>Get All Users:</strong> <code>GET /users</code></li>
+                <li><strong>Get User by ID:</strong> <code>GET /users/:id</code></li>
+                <li><strong>Update User:</strong> <code>PUT /users/:id</code></li>
+                <li><strong>Delete User:</strong> <code>DELETE /users/:id</code></li>
+            </ul>
 
-        <div class="route">
-            <h2>GET /products</h2>
-            <p>Retrieve a list of products.</p>
-            <pre>
-Method: GET
-URL: /api-nosql/api/v1/products
-Response: 
-[
-    {
-        "id": "1",
-        "name": "Product 1",
-        "price": 100
-    },
-    ...
-]
-            </pre>
-        </div>
+            <h3>Products</h3>
+            <ul>
+                <li><strong>Create Product:</strong> <code>POST /products</code></li>
+                <li><strong>Get All Products:</strong> <code>GET /products</code></li>
+                <li><strong>Get Product by ID:</strong> <code>GET /products/:id</code></li>
+                <li><strong>Search Products:</strong> <code>GET /products/search</code></li>
+                <li><strong>Update Product:</strong> <code>PUT /products/:id</code></li>
+                <li><strong>Delete Product:</strong> <code>DELETE /products/:id</code></li>
+            </ul>
+        </section>
 
-        <div class="route">
-            <h2>POST /products</h2>
-            <p>Create a new product.</p>
-            <pre>
-Method: POST
-URL: /api-nosql/api/v1/products
-Request Body: 
-{
-    "name": "Product 1",
-    "price": 100
-}
-Response: 
-{
-    "id": "1",
-    "name": "Product 1",
-    "price": 100
-}
-            </pre>
-        </div>
+        <section>
+            <h2>Example Usage</h2>
+            <h3>GET Request</h3>
+            <pre><code>curl -X GET http://localhost:3000/api-nosql/api/v1/users</code></pre>
+        </section>
     </div>
+    <footer class="footer">
+        <p>&copy; 2024 Schemaless API - Powered by Node.js, Express, and MongoDB</p>
+    </footer>
 </body>
 </html>
