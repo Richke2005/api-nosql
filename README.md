@@ -158,11 +158,12 @@ Resposta:
 ```
 
 
+
 **1.4 Buscar usuáris por Parâmetro**
 
 Endpoint: GET /api-nosql/api/v1/users/search?name=Leonardo&?email=leonardo.carvalho@example.com
 
-`nome: STRING` 
+`name: STRING` 
 `email: STRING`
 
 Resposta:
@@ -282,24 +283,123 @@ Resposta:
 }
 ```
 
-2.1. Buscar Produtos por Parâmetro
 
-Endpoint: GET /api-nosql/api/v1/products/search?name=Produto&priceGte=100
+**2.3 Buscar Produtos**
+
+Endpoint: GET /api-nosql/api/v1/products/
 
 Resposta:
 ```bash
 [
-  {
-    "_id": "product-id",
-    "name": "Produto X",
-    "price": 150.00,
-    "qtt_stock": 10,
-    "category": "Eletrônicos",
-    "registered_by": "user-id"
-  }
+    {
+        "_id": "673d4aca6d8ee18436831067",
+        "name": "Notebook",
+        "desc": "notebook dell processor 8th ...",
+        "price": 2400,
+        "qtt_stock": 10,
+        "category": [
+            "Eletronic",
+            "computer"
+        ],
+        "registered_by": {
+            "user_id": "673d508520cfb583bd2ddf1e",
+            "name": "Alice Souza"
+        }
+    },
+   {
+      ...
+   }
 ]
 ```
-4. Atualizar um Produto
+
+
+**2.3 Buscar Produto por ID**
+
+Endpoint: GET /api-nosql/api/v1/products/:id
+
+Resposta:
+```bash
+{
+   "_id": "673d4aca6d8ee18436831067",
+   "name": "Notebook",
+   "desc": "notebook dell processor 8th ...",
+   "price": 2400,
+   "qtt_stock": 10,
+   "category": [
+      "Eletronic",
+      "computer"
+  ],
+   "registered_by": {
+      "user_id": "673d508520cfb583bd2ddf1e",
+      "name": "Alice Souza"
+  }
+}
+```
+
+
+**2.4 Buscar Produtos por Parâmetro**
+
+Endpoint: GET /api-nosql/api/v1/products/search?name=Tablet&?priceGte=6000&?priceLte=7000&?qtt_stockGte=5&?qtt_stockLte=10&?category=Eletronics
+
+`name: STRING` - Returns a product with the name of parameter independent of LOWER CASE or UPPER CASE
+`priceGte: INTEGER` - Return a
+`priceLte: INTEGER`
+`qtt_stockGte: INTEGER`
+`qtt_stockLte: INTEGER`
+`category: STRING`
+
+Resposta:
+```bash
+[
+    {
+        "_id": "673d4bdbef6dabf900752f12",
+        "name": "Tablet",
+        "desc": "iPad Pro 11 polegadas, M2 Chip, 256GB ...",
+        "price": 6500,
+        "qtt_stock": 8,
+        "category": [
+            "Electronics",
+            "Tablet"
+        ],
+        "registered_by": {
+            "user_id": "673d508520cfb583bd2ddf1e",
+            "name": "Alice Souza"
+        }
+    }
+]
+```
+
+
+**2.5 Buscar Informação do usuário que cadastrou o produto**
+
+Endpoint: GET /api-nosql/api/v1/products/:id/user
+`:id - ID do produto`
+
+Resposta:
+```bash
+[
+    {
+        "_id": "673d4bdbef6dabf900752f12",
+        "name": "Tablet",
+        "desc": "iPad Pro 11 polegadas, M2 Chip, 256GB ...",
+        "price": 6500,
+        "qtt_stock": 8,
+        "category": [
+            "Electronics",
+            "Tablet"
+        ],
+        "registering_user": {
+            "_id": "673d508520cfb583bd2ddf1e",
+            "name": "Alice Souza",
+            "email": "alice.souza@example.com",
+            "created_in": "2024-11-19"
+        }
+    }
+]
+```
+
+
+**2.6 Atualizar um Produto**
 
 Endpoint: PUT /api-nosql/api/v1/products/:id
 
@@ -313,23 +413,29 @@ Corpo da Requisição:
 Resposta:
 ```bash
 {
-  "message": "Document with ID: some-product-id successfully updated",
-  "update": {
-    "matchedCount": 1
-  }
+    "message": "Document with ID: 673d4bdbef6dabf900752f12 successfully updated",
+    "update": {
+        "acknowledged": true,
+        "modifiedCount": 1,
+        "upsertedId": null,
+        "upsertedCount": 0,
+        "matchedCount": 1
+    }
 }
 ```
-5. Deletar um Produto
+
+
+**2.7 Deletar um Produto**
 
 Endpoint: DELETE /api-nosql/api/v1/products/:id
 
 Resposta:
 ```bash
 {
-  "message": "Document with ID some-product-id was deleted",
-  "deleted": {
-    "deletedCount": 1
-  }
+    "message": "Document with ID 673d4bdbef6dabf900752f12 Was deleted",
+    "deleted": {
+        "acknowledged": true,
+        "deletedCount": 1
+    }
 }
 ```
-
