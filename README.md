@@ -340,11 +340,16 @@ Resposta:
 
 Endpoint: GET /api-nosql/api/v1/products/search?name=Tablet&?priceGte=6000&?priceLte=7000&?qtt_stockGte=5&?qtt_stockLte=10&?category=Eletronics
 
-`name: STRING` - Returns a product with the name of parameter independent of LOWER CASE or UPPER CASE
-`priceGte: INTEGER` - Return a
+`name: STRING`
+
+`priceGte: INTEGER`
+
 `priceLte: INTEGER`
+
 `qtt_stockGte: INTEGER`
+
 `qtt_stockLte: INTEGER`
+
 `category: STRING`
 
 Resposta:
@@ -372,6 +377,7 @@ Resposta:
 **2.5 Buscar Informação do usuário que cadastrou o produto**
 
 Endpoint: GET /api-nosql/api/v1/products/:id/user
+
 `:id - ID do produto`
 
 Resposta:
