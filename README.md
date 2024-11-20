@@ -1,12 +1,11 @@
 #  Schemaless API
 
-
 | :placard: Vitrine.Dev |     |
 | -------------  | --- |
 | :sparkles: Nome        | **Schemaless API**
 | :label: Tecnologias | node.js, express, mongodb (tecnologias utilizadas)
-| :rocket: URL         | https://url-deploy.com.br
-| :fire: Desafio     | https://url-do-desafio.com.br
+| :rocket: URL         | 
+| :fire: Desafio     | Realizar uma API com o conteúdo cursado no semestre
 
 <!-- Inserir imagem com a #vitrinedev ao final do link -->
 ![](https://lh3.googleusercontent.com/pw/AP1GczNnh9ZXvjrgA9uXm0bfVfeP4OklvoM5VrQswMJC-pmmEmCQoX1GLyCqZL7ulsR9qHa-C-qvVc4qSbqvSJqTNpsUg6i_ZsNV9Uht4YCTJMzf4sf9wHAuZJkx6FrOw-rxUxHfirpi6QlE9Fxt7cQFE0uHlQ=w1093-h615-s-no-gm?authuser=1#vitrinedev)
